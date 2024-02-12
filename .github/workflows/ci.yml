@@ -86,6 +86,24 @@ jobs:
         with:
           envFile: '.github/constants.env'
 
+      - name: Setup Cpp
+        uses: aminya/setup-cpp@v1
+        with:
+          compiler: ${{ matrix.compiler }}
+
+          cmake: true
+          ninja: true
+          vcpkg: false
+          ccache: true
+          clangtidy: ${{ env.CLANG_TIDY_VERSION }}
+
+
+          cppcheck: true
+
+          gcovr: true
+          opencppcoverage: true
+
+
       - name: Install dependencies
         run: |
           sudo apt-get install -q -y \
@@ -120,23 +138,6 @@ jobs:
           sudo make install
           cd ../..
           rm -r libgit2cpp
-
-      - name: Setup Cpp
-        uses: aminya/setup-cpp@v1
-        with:
-          compiler: ${{ matrix.compiler }}
-
-          cmake: true
-          ninja: true
-          vcpkg: false
-          ccache: true
-          clangtidy: ${{ env.CLANG_TIDY_VERSION }}
-
-
-          cppcheck: true
-
-          gcovr: true
-          opencppcoverage: true
 
       - name: Configure CMake
         run: |
