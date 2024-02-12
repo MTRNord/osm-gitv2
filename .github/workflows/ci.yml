@@ -88,7 +88,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt-get install -q -y \
+          sudo apt-get install -q -y \
               cmake \
               doxygen \
               g++ \
@@ -118,7 +118,7 @@ jobs:
           mkdir build && cd build
           cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_LIBGIT2CPP_EXAMPLES=OFF ..
           make
-          make install
+          sudo make install
           cd ../..
           rm -r libgit2cpp
 
