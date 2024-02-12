@@ -1,3 +1,8 @@
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../cmake")
+
+find_package(Osmium REQUIRED COMPONENTS io pbf xml)
+include_directories(SYSTEM ${OSMIUM_INCLUDE_DIRS})
+
 add_executable(osm_git main.cpp)
 
 target_link_libraries(
@@ -10,6 +15,7 @@ target_link_system_libraries(
   PRIVATE
           CLI11::CLI11
           fmt::fmt
+          libgit2cpp.a
           spdlog::spdlog)
 
 target_include_directories(osm_git PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include")

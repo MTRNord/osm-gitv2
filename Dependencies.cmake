@@ -32,7 +32,7 @@ function(osm_git_setup_dependencies)
     cpmaddpackage("gh:CLIUtils/CLI11@2.4.1")
   endif()
 
-  if(NOT TARGET libgit2cpp::git2cpp)
+  if(NOT TARGET libgit2cpp)
     cpmaddpackage(
       NAME libgit2cpp
       GITHUB_REPOSITORY AndreyG/libgit2cpp
