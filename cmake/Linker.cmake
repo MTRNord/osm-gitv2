@@ -1,4 +1,4 @@
-macro(osm_gitv2_configure_linker project_name)
+macro(osm_git_configure_linker project_name)
   include(CheckCXXCompilerFlag)
 
   set(USER_LINKER_OPTION

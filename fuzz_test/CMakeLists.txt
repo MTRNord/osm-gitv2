@@ -6,8 +6,8 @@ find_package(fmt)
 add_executable(fuzz_tester fuzz_tester.cpp)
 target_link_libraries(
   fuzz_tester
-  PRIVATE osm_gitv2_options
-          osm_gitv2_warnings
+  PRIVATE osm_git_options
+          osm_git_warnings
           fmt::fmt
           -coverage
           -fsanitize=fuzzer)

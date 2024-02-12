@@ -1,4 +1,4 @@
-macro(osm_gitv2_enable_ipo)
+macro(osm_git_enable_ipo)
   include(CheckIPOSupported)
   check_ipo_supported(RESULT result OUTPUT output)
   if(result)

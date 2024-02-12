@@ -1,5 +1,5 @@
 # Enable cache if available
-function(osm_gitv2_enable_cache)
+function(osm_git_enable_cache)
   set(CACHE_OPTION
       "ccache"
       CACHE STRING "Compiler cache to be used")

@@ -1,7 +1,7 @@
 include(CheckCXXCompilerFlag)
 
 macro(
-  osm_gitv2_enable_hardening
+  osm_git_enable_hardening
   target
   global
   ubsan_minimal_runtime)

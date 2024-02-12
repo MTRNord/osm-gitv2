@@ -16,23 +16,23 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Set the project name and language
 project(
-  osm_gitv2
-  VERSION 0.0.1
+  osm_git
+  VERSION 0.1.0
   DESCRIPTION ""
-  HOMEPAGE_URL "https://github.com/MTRNord/osm-gitv2"
+  HOMEPAGE_URL "https://github.com/MTRNord/osm_gitv2"
   LANGUAGES CXX C)
 
 include(cmake/PreventInSourceBuilds.cmake)
 include(ProjectOptions.cmake)
 
 
-osm_gitv2_setup_options()
+osm_git_setup_options()
 
-osm_gitv2_global_options()
+osm_git_global_options()
 include(Dependencies.cmake)
-osm_gitv2_setup_dependencies()
+osm_git_setup_dependencies()
 
-osm_gitv2_local_options()
+osm_git_local_options()
 
 # don't know if this should be set globally from here or not...
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
@@ -46,13 +46,13 @@ string(
             8
             GIT_SHORT_SHA)
 
-target_compile_features(osm_gitv2_options INTERFACE cxx_std_${CMAKE_CXX_STANDARD})
+target_compile_features(osm_git_options INTERFACE cxx_std_${CMAKE_CXX_STANDARD})
 
-add_library(osm_gitv2::osm_gitv2_options ALIAS osm_gitv2_options)
-add_library(osm_gitv2::osm_gitv2_warnings ALIAS osm_gitv2_warnings)
+add_library(osm_git::osm_git_options ALIAS osm_git_options)
+add_library(osm_git::osm_git_warnings ALIAS osm_git_warnings)
 
-#add_library(osm_gitv2::osm_gitv2_options INTERFACE IMPORTED)
-#add_library(osm_gitv2::osm_gitv2_warnings INTERFACE IMPORTED)
+#add_library(osm_git::osm_git_options INTERFACE IMPORTED)
+#add_library(osm_git::osm_git_warnings INTERFACE IMPORTED)
 
 # configure files based on CMake configuration options
 add_subdirectory(configured_files)
@@ -74,9 +74,9 @@ if(BUILD_TESTING)
 endif()
 
 
-if(osm_gitv2_BUILD_FUZZ_TESTS)
+if(osm_git_BUILD_FUZZ_TESTS)
   message(AUTHOR_WARNING "Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/LibFuzzer.html")
-  if (NOT osm_gitv2_ENABLE_ADDRESS_SANITIZER AND NOT osm_gitv2_ENABLE_THREAD_SANITIZER)
+  if (NOT osm_git_ENABLE_ADDRESS_SANITIZER AND NOT osm_git_ENABLE_THREAD_SANITIZER)
     message(WARNING "You need asan or tsan enabled for meaningful fuzz testing")
   endif()
   add_subdirectory(fuzz_test)
@@ -92,7 +92,7 @@ if(MSVC)
 endif()
 
 # set the startup project for the "play" button in MSVC
-set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT intro)
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT osm_git)
 
 if(CMAKE_SKIP_INSTALL_RULES)
   return()
@@ -102,11 +102,11 @@ include(cmake/PackageProject.cmake)
 
 # Add other targets that you want installed here, by default we just package the one executable
 # we know we want to ship
-osm_gitv2_package_project(
+osm_git_package_project(
   TARGETS
-  intro
-  osm_gitv2_options
-  osm_gitv2_warnings
+  osm_git
+  osm_git_options
+  osm_git_warnings
   # FIXME: this does not work! CK
   # PRIVATE_DEPENDENCIES_CONFIGURED project_options project_warnings
 )

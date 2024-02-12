@@ -1,7 +1,7 @@
 #
 # This function will prevent in-source builds
 #
-function(osm_gitv2_assure_out_of_source_builds)
+function(osm_git_assure_out_of_source_builds)
   # make sure the user doesn't play dirty with symlinks
   get_filename_component(srcdir "${CMAKE_SOURCE_DIR}" REALPATH)
   get_filename_component(bindir "${CMAKE_BINARY_DIR}" REALPATH)
@@ -16,4 +16,4 @@ function(osm_gitv2_assure_out_of_source_builds)
   endif()
 endfunction()
 
-osm_gitv2_assure_out_of_source_builds()
+osm_git_assure_out_of_source_builds()

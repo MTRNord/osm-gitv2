@@ -1,4 +1,4 @@
-function(osm_gitv2_check_libfuzzer_support var_name)
+function(osm_git_check_libfuzzer_support var_name)
   set(LibFuzzerTestSource
       "
 #include <cstdint>
