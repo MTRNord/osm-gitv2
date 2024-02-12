@@ -15,7 +15,7 @@ target_link_system_libraries(
   PRIVATE
           CLI11::CLI11
           fmt::fmt
-          libgit2cpp.a
+          git2
           spdlog::spdlog)
 
 target_include_directories(osm_git PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include")

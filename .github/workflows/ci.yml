@@ -16,12 +16,10 @@ env:
 
 jobs:
   Test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - ubuntu-22.04
         compiler:
           # you can specify the version after `-` like "llvm-15.0.2".
           - llvm-17.0.6
@@ -126,18 +124,8 @@ jobs:
               zlib1g-dev \
               libosmium2-dev \
               libgit2-dev \
-              git
-
-      - name: Build libgit2cpp
-        run: |
-          git clone https://github.com/AndreyG/libgit2cpp.git
-          cd libgit2cpp
-          mkdir build && cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_LIBGIT2CPP_EXAMPLES=OFF ..
-          make
-          sudo make install
-          cd ../..
-          rm -r libgit2cpp
+              git \
+              libssh2-1-dev
 
       - name: Configure CMake
         run: |

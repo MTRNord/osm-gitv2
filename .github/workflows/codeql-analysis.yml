@@ -103,18 +103,8 @@ jobs:
             zlib1g-dev \
             libosmium2-dev \
             libgit2-dev \
-            git
-
-    - name: Build libgit2cpp
-      run: |
-        git clone https://github.com/AndreyG/libgit2cpp.git
-        cd libgit2cpp
-        mkdir build && cd build
-        cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_LIBGIT2CPP_EXAMPLES=OFF ..
-        make
-        sudo make install
-        cd ../..
-        rm -r libgit2cpp
+            git \
+            libssh2-1-dev
 
       # make sure coverage is only enabled for Debug builds, since it sets -O0 to make sure coverage
       # has meaningful results
